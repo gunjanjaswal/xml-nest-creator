@@ -101,6 +101,16 @@ class XNC_Settings {
 				submit_button();
 				?>
 			</form>
+			
+			<hr style="margin-top: 30px;">
+			<div style="margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #ccd0d4; border-left: 4px solid #2271b1; max-width: 600px;">
+				<h3 style="margin-top: 0;">Need Help or Customization?</h3>
+				<p style="margin-bottom: 0;">
+					<strong>Developed by:</strong> Gunjan Jaswal<br>
+					<strong>Website:</strong> <a href="https://www.gunjanjaswal.me" target="_blank">www.gunjanjaswal.me</a><br>
+					<strong>Contact:</strong> <a href="mailto:hello@gunjanjaswal.me">hello@gunjanjaswal.me</a>
+				</p>
+			</div>
 		</div>
 		<?php
 	}
