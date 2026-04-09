@@ -12,15 +12,15 @@
 
 ## ✨ Why XML Nest Creator?
 
-Generating a standard `sitemap.xml` shouldn't be overly complex or bloated. Many popular SEO plugins provide a sitemap, but they can be rigid or packed with extra functionality. **XML Nest Creator** specializes in exactly one thing: dynamically generating a valid, highly efficient `sitemap.xml` file, while intelligently bypassing duplicate functionality from popular SEO plugins.
+Looking for a **simple XML generator**? XML Nest Creator is the absolute easiest way to generate a `sitemap.xml` file for your WordPress website. Many SEO plugins come with too many complicated or confusing settings. This simple sitemap generator is designed to do exactly one thing perfectly: it creates a clean XML sitemap so that search engines can easily find and index your content.
 
 ## 🚀 Key Features
 
-* **🎯 Surgical Precision:** Decide exactly which **Post Types** (Posts, Pages, products, portfolio) and **Taxonomies** (Categories, Tags) you want indexed via an easy checkbox UI.
-* **🛡️ Conflict-Free Core:** Automatically overrides and disables the native WordPress sitemap (`wp-sitemap.xml` introduced in WP 5.5) to prevent duplicate mapping.
-* **🔌 SEO Plugin Compatible:** Automatically disables the sitemap functionalities of **Yoast SEO** and **Rank Math**, while natively preserving all their other powerful SEO and schema markup features under the hood. 
-* **⚡ Dynamic Rendering:** Instantly regenerates the XML payload upon request via the native Rewrite API; no messy cron jobs or static file generation required.
-* **🕹️ Native UI:** Utilizes the lightweight, fast WordPress Settings API—no bloated dashboards or aggressive upsells!
+* **🎯 Simple to Use:** Use our easy checkboxes to decide exactly which **Post Types** (Posts, Pages, products) and **Taxonomies** (Categories, Tags) you want in your sitemap.
+* **🛡️ No Conflicts:** It safely turns off the default WordPress sitemap (`wp-sitemap.xml`) so you don't have duplicates.
+* **🔌 Works with SEO Plugins:** Automatically disables the sitemap feature of **Yoast SEO** and **Rank Math**, while letting you keep all their other helpful SEO features and meta tags. 
+* **⚡ Always Up to Date:** Instantly builds your XML sitemap when a search engine asks for it. No messy cron jobs or files required.
+* **🕹️ Clean Settings Page:** Enjoy a fast, simple settings page built right into WordPress without any bloated dashboards!
 
 ## 📥 Installation
 

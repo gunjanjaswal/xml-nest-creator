@@ -83,13 +83,15 @@ class XNC_Settings {
 		}
 	}
 
+
 	public function render_settings_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+		$sitemap_url = home_url( '/sitemap.xml' );
 		?>
 		<div class="wrap">
-			<h1>XML Nest Creator</h1>
+			<h1>XML Nest Creator <a href="<?php echo esc_url( $sitemap_url ); ?>" target="_blank" class="page-title-action">View Sitemap</a></h1>
 			<p>This plugin generates a dynamic <code>sitemap.xml</code> and automatically overrides Yoast SEO and Rank Math sitemaps specifically for the XML generation.</p>
 			<hr>
 			<form action="options.php" method="post">
