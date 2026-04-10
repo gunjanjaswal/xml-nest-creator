@@ -85,7 +85,7 @@ class XNC_Settings {
 		foreach ( $post_types as $pt ) {
 			if ( $pt->name === 'attachment' ) { continue; }
 			$checked = in_array( $pt->name, (array) $selected_post_types, true ) ? 'checked' : '';
-			echo '<label><input type="checkbox" name="xnc_options[post_types][]" value="' . esc_attr( $pt->name ) . '" ' . $checked . '> ' . esc_html( $pt->label ) . '</label><br>';
+			echo '<label><input type="checkbox" name="xnc_options[post_types][]" value="' . esc_attr( $pt->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $pt->label ) . '</label><br>';
 		}
 	}
 
@@ -99,7 +99,7 @@ class XNC_Settings {
 		foreach ( $taxonomies as $tax ) {
 			if ( $tax->name === 'post_format' ) { continue; }
 			$checked = in_array( $tax->name, (array) $selected_taxonomies, true ) ? 'checked' : '';
-			echo '<label><input type="checkbox" name="xnc_options[taxonomies][]" value="' . esc_attr( $tax->name ) . '" ' . $checked . '> ' . esc_html( $tax->label ) . '</label><br>';
+			echo '<label><input type="checkbox" name="xnc_options[taxonomies][]" value="' . esc_attr( $tax->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $tax->label ) . '</label><br>';
 		}
 	}
 
