@@ -2,8 +2,8 @@
 Contributors: gunjanjaswal
 Tags: simple xml generator, simple sitemap, xml generator, sitemap, seo
 Requires at least: 5.5
-Tested up to: 6.5
-Stable tag: 1.0.0
+Tested up to: 6.9
+Stable tag: 1.0.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,11 @@ You can reach out to Gunjan Jaswal via [hello@gunjanjaswal.me](mailto:hello@gunj
 1. The XML Nest Creator Settings Page where you dictate indexation rules.
 
 == Changelog ==
+
+= 1.0.1 =
+* Added License header to main plugin file for WordPress.org compliance.
+* Added sanitization callback for register_setting() to properly sanitize options.
+* Updated "Tested up to" to WordPress 6.9.
 
 = 1.0.0 =
 * Initial release. Features dynamic `sitemap.xml` rewrite rule generation.

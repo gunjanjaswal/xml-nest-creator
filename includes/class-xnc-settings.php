@@ -25,7 +25,9 @@ class XNC_Settings {
 	}
 
 	public function register_settings() {
-		register_setting( 'xnc_settings_group', 'xnc_options' );
+		register_setting( 'xnc_settings_group', 'xnc_options', array(
+			'sanitize_callback' => array( $this, 'sanitize_options' ),
+		) );
 
 		add_settings_section(
 			'xnc_general_section',
@@ -49,6 +51,24 @@ class XNC_Settings {
 			'xml-nest-creator',
 			'xnc_general_section'
 		);
+	}
+
+	public function sanitize_options( $input ) {
+		$sanitized = array();
+
+		if ( isset( $input['post_types'] ) && is_array( $input['post_types'] ) ) {
+			$sanitized['post_types'] = array_map( 'sanitize_text_field', $input['post_types'] );
+		} else {
+			$sanitized['post_types'] = array();
+		}
+
+		if ( isset( $input['taxonomies'] ) && is_array( $input['taxonomies'] ) ) {
+			$sanitized['taxonomies'] = array_map( 'sanitize_text_field', $input['taxonomies'] );
+		} else {
+			$sanitized['taxonomies'] = array();
+		}
+
+		return $sanitized;
 	}
 
 	public function render_general_section() {

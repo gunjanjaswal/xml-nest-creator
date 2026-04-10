@@ -3,10 +3,12 @@
  * Plugin Name: XML Nest Creator
  * Plugin URI:  https://github.com/gunjanjaswal/xml-nest-creator
  * Description: A simple XML creator for posts, pages, categories (or others) that generates a sitemap.xml and overrides popular SEO plugins specifically for the XML sitemap.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Gunjan Jaswal
  * Author URI:  https://www.gunjanjaswal.me
  * Text Domain: xml-nest-creator
+ * License:     GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'XNC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'XNC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'XNC_VERSION', '1.0.0' );
+define( 'XNC_VERSION', '1.0.1' );
 
 // Include necessary files.
 require_once XNC_PLUGIN_DIR . 'includes/class-xnc-compat.php';
