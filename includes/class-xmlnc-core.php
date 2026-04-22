@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class XNC_Core {
+class XMLNC_Core {
 
 	public function __construct() {
 		add_action( 'init', array( $this, 'add_rewrite_rules' ) );
@@ -22,9 +22,9 @@ class XNC_Core {
 	 * Flush rewrite rules if the transient is set (on activation).
 	 */
 	public function maybe_flush_rewrite_rules() {
-		if ( get_transient( 'xnc_flush_rewrite_rules' ) ) {
+		if ( get_transient( 'xmlnc_flush_rewrite_rules' ) ) {
 			flush_rewrite_rules();
-			delete_transient( 'xnc_flush_rewrite_rules' );
+			delete_transient( 'xmlnc_flush_rewrite_rules' );
 		}
 	}
 
@@ -32,14 +32,14 @@ class XNC_Core {
 	 * Add rewrite rule for sitemap.xml.
 	 */
 	public function add_rewrite_rules() {
-		add_rewrite_rule( '^sitemap\.xml$', 'index.php?xnc_sitemap=1', 'top' );
+		add_rewrite_rule( '^sitemap\.xml$', 'index.php?xmlnc_sitemap=1', 'top' );
 	}
 
 	/**
 	 * Add custom query variable.
 	 */
 	public function add_query_vars( $vars ) {
-		$vars[] = 'xnc_sitemap';
+		$vars[] = 'xmlnc_sitemap';
 		return $vars;
 	}
 
@@ -47,7 +47,7 @@ class XNC_Core {
 	 * Render the sitemap content.
 	 */
 	public function render_sitemap() {
-		if ( get_query_var( 'xnc_sitemap' ) ) {
+		if ( get_query_var( 'xmlnc_sitemap' ) ) {
 			// Clean any existing output to avoid XML errors.
 			if ( ob_get_length() ) {
 				ob_clean();
@@ -58,7 +58,7 @@ class XNC_Core {
 			echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 			echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 
-			$options    = get_option( 'xnc_options' );
+			$options    = get_option( 'xmlnc_options' );
 			$post_types = isset( $options['post_types'] ) ? $options['post_types'] : array( 'post', 'page' );
 			$taxonomies = isset( $options['taxonomies'] ) ? $options['taxonomies'] : array( 'category' );
 

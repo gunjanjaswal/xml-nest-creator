@@ -2,7 +2,7 @@
   <h1>🗺️ XML Nest Creator</h1>
   <p><strong>A simple, highly customizable and conflict-free XML Sitemap Generator for WordPress.</strong></p>
   
-  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
+  [![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![WordPress](https://img.shields.io/badge/WordPress-5.5+-green.svg)](https://wordpress.org)
   [![License](https://img.shields.io/badge/license-GPLv2-brightgreen.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![Author](https://img.shields.io/badge/author-Gunjan_Jaswal-orange.svg)](https://www.gunjanjaswal.me)

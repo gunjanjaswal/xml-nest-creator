@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class XNC_Compat {
+class XMLNC_Compat {
 
 	public function __construct() {
 		// Disable core WordPress sitemap (available in WP 5.5+).

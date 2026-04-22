@@ -3,7 +3,7 @@ Contributors: gunjanjaswal
 Tags: simple xml generator, simple sitemap, xml generator, sitemap, seo
 Requires at least: 5.5
 Tested up to: 6.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,9 @@ You can reach out to Gunjan Jaswal via [hello@gunjanjaswal.me](mailto:hello@gunj
 1. The XML Nest Creator Settings Page where you dictate indexation rules.
 
 == Changelog ==
+
+= 1.0.2 =
+* Renamed prefix from `xnc` to `xmlnc` (5 chars) to meet WordPress.org uniqueness requirement. Affects class names (`XMLNC_Compat`, `XMLNC_Core`, `XMLNC_Settings`), constants (`XMLNC_PLUGIN_DIR`, `XMLNC_PLUGIN_URL`, `XMLNC_VERSION`), option key (`xmlnc_options`), settings group (`xmlnc_settings_group`), transient, query var, and include file names.
 
 = 1.0.1 =
 * Added License header to main plugin file for WordPress.org compliance.

@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class XNC_Settings {
+class XMLNC_Settings {
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
@@ -25,31 +25,31 @@ class XNC_Settings {
 	}
 
 	public function register_settings() {
-		register_setting( 'xnc_settings_group', 'xnc_options', array(
+		register_setting( 'xmlnc_settings_group', 'xmlnc_options', array(
 			'sanitize_callback' => array( $this, 'sanitize_options' ),
 		) );
 
 		add_settings_section(
-			'xnc_general_section',
+			'xmlnc_general_section',
 			'General Settings',
 			array( $this, 'render_general_section' ),
 			'xml-nest-creator'
 		);
 
 		add_settings_field(
-			'xnc_post_types',
+			'xmlnc_post_types',
 			'Include Post Types',
 			array( $this, 'render_post_types_field' ),
 			'xml-nest-creator',
-			'xnc_general_section'
+			'xmlnc_general_section'
 		);
 
 		add_settings_field(
-			'xnc_taxonomies',
+			'xmlnc_taxonomies',
 			'Include Taxonomies',
 			array( $this, 'render_taxonomies_field' ),
 			'xml-nest-creator',
-			'xnc_general_section'
+			'xmlnc_general_section'
 		);
 	}
 
@@ -76,7 +76,7 @@ class XNC_Settings {
 	}
 
 	public function render_post_types_field() {
-		$options = get_option( 'xnc_options' );
+		$options = get_option( 'xmlnc_options' );
 		// Default to post and page if not set.
 		$selected_post_types = isset( $options['post_types'] ) ? $options['post_types'] : array( 'post', 'page' );
 		
@@ -85,12 +85,12 @@ class XNC_Settings {
 		foreach ( $post_types as $pt ) {
 			if ( $pt->name === 'attachment' ) { continue; }
 			$checked = in_array( $pt->name, (array) $selected_post_types, true ) ? 'checked' : '';
-			echo '<label><input type="checkbox" name="xnc_options[post_types][]" value="' . esc_attr( $pt->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $pt->label ) . '</label><br>';
+			echo '<label><input type="checkbox" name="xmlnc_options[post_types][]" value="' . esc_attr( $pt->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $pt->label ) . '</label><br>';
 		}
 	}
 
 	public function render_taxonomies_field() {
-		$options = get_option( 'xnc_options' );
+		$options = get_option( 'xmlnc_options' );
 		// Default to category if not set.
 		$selected_taxonomies = isset( $options['taxonomies'] ) ? $options['taxonomies'] : array( 'category' );
 		
@@ -99,7 +99,7 @@ class XNC_Settings {
 		foreach ( $taxonomies as $tax ) {
 			if ( $tax->name === 'post_format' ) { continue; }
 			$checked = in_array( $tax->name, (array) $selected_taxonomies, true ) ? 'checked' : '';
-			echo '<label><input type="checkbox" name="xnc_options[taxonomies][]" value="' . esc_attr( $tax->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $tax->label ) . '</label><br>';
+			echo '<label><input type="checkbox" name="xmlnc_options[taxonomies][]" value="' . esc_attr( $tax->name ) . '" ' . esc_attr( $checked ) . '> ' . esc_html( $tax->label ) . '</label><br>';
 		}
 	}
 
@@ -116,7 +116,7 @@ class XNC_Settings {
 			<hr>
 			<form action="options.php" method="post">
 				<?php
-				settings_fields( 'xnc_settings_group' );
+				settings_fields( 'xmlnc_settings_group' );
 				do_settings_sections( 'xml-nest-creator' );
 				submit_button();
 				?>
