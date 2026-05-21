@@ -73,6 +73,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'xmlnc_plugin_
  */
 function xmlnc_plugin_row_meta( $links, $file ) {
 	if ( plugin_basename( __FILE__ ) === $file ) {
+		$links[] = '<a href="https://wordpress.org/support/plugin/xml-nest-creator/" target="_blank">' . esc_html__( 'Plugin Support', 'xml-nest-creator' ) . '</a>';
 		$links[] = '<a href="mailto:hello@gunjanjaswal.me">' . esc_html__( 'Contact Developer', 'xml-nest-creator' ) . '</a>';
 	}
 	return $links;
