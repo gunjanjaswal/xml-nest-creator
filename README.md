@@ -2,10 +2,11 @@
   <h1>🗺️ XML Nest Creator</h1>
   <p><strong>A simple, highly customizable and conflict-free XML Sitemap Generator for WordPress.</strong></p>
   
-  [![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
+  [![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![WordPress](https://img.shields.io/badge/WordPress-5.5+-green.svg)](https://wordpress.org)
   [![License](https://img.shields.io/badge/license-GPLv2-brightgreen.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![Author](https://img.shields.io/badge/author-Gunjan_Jaswal-orange.svg)](https://www.gunjanjaswal.me)
+  [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/gunjanjaswal)
 </div>
 
 <hr>
@@ -44,6 +45,28 @@ Once activated, simply head over to the settings menu. The plugin automatically 
 Maintained and developed by **Gunjan Jaswal**.
 * 🌍 Website: [www.gunjanjaswal.me](https://www.gunjanjaswal.me)
 * 📧 Email: [hello@gunjanjaswal.me](mailto:hello@gunjanjaswal.me)
+* ☕ Ko-fi: [ko-fi.com/gunjanjaswal](https://ko-fi.com/gunjanjaswal)
+
+## 📝 Changelog
+
+### 1.0.3
+- Updated "Tested up to" to WordPress 7.0.
+- Added `Settings` and `Support on Ko-fi` links to plugin action links (next to Deactivate).
+- Added `Contact Developer` link to plugin row meta on the Plugins screen.
+- Added `Requires at least`, `Tested up to`, and `Requires PHP` headers to the main plugin file.
+
+### 1.0.2
+- Renamed prefix from `xnc` to `xmlnc` (5 chars) to meet WordPress.org uniqueness requirement.
+
+### 1.0.1
+- Added License header to main plugin file.
+- Added sanitization callback for `register_setting()`.
+- Updated "Tested up to" to WordPress 6.9.
+
+### 1.0.0
+- Initial release. Dynamic `sitemap.xml` rewrite rule generation.
+- Native WP Settings API UI for post type and taxonomy selection.
+- Conflict overrides for Yoast SEO, Rank Math, and native WP Core sitemaps.
 
 ## 📄 License
 

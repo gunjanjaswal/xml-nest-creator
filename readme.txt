@@ -2,11 +2,12 @@
 Contributors: gunjanjaswal
 Tags: simple xml generator, simple sitemap, xml generator, sitemap, seo
 Requires at least: 5.5
-Tested up to: 6.9
-Stable tag: 1.0.2
+Tested up to: 7.0
+Stable tag: 1.0.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://ko-fi.com/gunjanjaswal
 
 A very simple XML generator for WordPress. Create a clean sitemap.xml file for your posts, pages, and categories without any bloated settings.
 
@@ -45,6 +46,12 @@ You can reach out to Gunjan Jaswal via [hello@gunjanjaswal.me](mailto:hello@gunj
 1. The XML Nest Creator Settings Page where you dictate indexation rules.
 
 == Changelog ==
+
+= 1.0.3 =
+* Updated "Tested up to" to WordPress 7.0.
+* Added `Settings` and `Support on Ko-fi` links to plugin action links (next to Deactivate).
+* Added `Contact Developer` link to plugin row meta on the Plugins screen.
+* Added `Requires at least`, `Tested up to`, and `Requires PHP` headers to the main plugin file.
 
 = 1.0.2 =
 * Renamed prefix from `xnc` to `xmlnc` (5 chars) to meet WordPress.org uniqueness requirement. Affects class names (`XMLNC_Compat`, `XMLNC_Core`, `XMLNC_Settings`), constants (`XMLNC_PLUGIN_DIR`, `XMLNC_PLUGIN_URL`, `XMLNC_VERSION`), option key (`xmlnc_options`), settings group (`xmlnc_settings_group`), transient, query var, and include file names.
