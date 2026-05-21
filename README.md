@@ -51,6 +51,7 @@ Maintained and developed by **Gunjan Jaswal**.
 
 ### 1.0.3
 - Updated "Tested up to" to WordPress 7.0.
+- Bumped minimum PHP requirement to 7.4 (WordPress 7.0 dropped support for PHP 7.2 and 7.3).
 - Added `Settings` and `Support on Ko-fi` links to plugin action links (next to Deactivate).
 - Added `Contact Developer` link to plugin row meta on the Plugins screen.
 - Added `Requires at least`, `Tested up to`, and `Requires PHP` headers to the main plugin file.

@@ -4,7 +4,7 @@ Tags: simple xml generator, simple sitemap, xml generator, sitemap, seo
 Requires at least: 5.5
 Tested up to: 7.0
 Stable tag: 1.0.3
-Requires PHP: 7.2
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://ko-fi.com/gunjanjaswal
@@ -49,6 +49,7 @@ You can reach out to Gunjan Jaswal via [hello@gunjanjaswal.me](mailto:hello@gunj
 
 = 1.0.3 =
 * Updated "Tested up to" to WordPress 7.0.
+* Bumped minimum PHP requirement to 7.4 (WordPress 7.0 dropped support for PHP 7.2 and 7.3).
 * Added `Settings` and `Support on Ko-fi` links to plugin action links (next to Deactivate).
 * Added `Contact Developer` link to plugin row meta on the Plugins screen.
 * Added `Requires at least`, `Tested up to`, and `Requires PHP` headers to the main plugin file.
