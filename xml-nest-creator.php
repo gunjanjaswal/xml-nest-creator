@@ -3,7 +3,7 @@
  * Plugin Name: XML Nest Creator
  * Plugin URI:  https://github.com/gunjanjaswal/xml-nest-creator
  * Description: A simple XML creator for posts, pages, categories (or others) that generates a sitemap.xml and overrides popular SEO plugins specifically for the XML sitemap.
- * Version:     1.0.3
+ * Version:     1.1.0
  * Author:      Gunjan Jaswal
  * Author URI:  https://www.gunjanjaswal.me
  * Text Domain: xml-nest-creator
@@ -20,23 +20,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'XMLNC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'XMLNC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'XMLNC_VERSION', '1.0.3' );
+define( 'XMLNC_VERSION', '1.1.0' );
+
+// Maximum number of URLs per sub-sitemap before pagination kicks in.
+define( 'XMLNC_PER_PAGE', 2000 );
 
 // Include necessary files.
 require_once XMLNC_PLUGIN_DIR . 'includes/class-xmlnc-compat.php';
 require_once XMLNC_PLUGIN_DIR . 'includes/class-xmlnc-core.php';
+require_once XMLNC_PLUGIN_DIR . 'includes/class-xmlnc-ping.php';
 require_once XMLNC_PLUGIN_DIR . 'includes/class-xmlnc-settings.php';
+require_once XMLNC_PLUGIN_DIR . 'includes/class-xmlnc-metabox.php';
 
 // Initialize the plugin classes.
 function xmlnc_init_plugin() {
 	new XMLNC_Compat();
 	new XMLNC_Core();
+	new XMLNC_Ping();
 
 	if ( is_admin() ) {
 		new XMLNC_Settings();
+		new XMLNC_Metabox();
 	}
 }
 add_action( 'plugins_loaded', 'xmlnc_init_plugin' );
+
+// Flush rewrite rules once after an upgrade so new sitemap routes register.
+add_action( 'plugins_loaded', 'xmlnc_maybe_upgrade', 5 );
+function xmlnc_maybe_upgrade() {
+	if ( get_option( 'xmlnc_version' ) !== XMLNC_VERSION ) {
+		set_transient( 'xmlnc_flush_rewrite_rules', 1 );
+		update_option( 'xmlnc_version', XMLNC_VERSION );
+	}
+}
 
 // Activation hook: set a transient to flush rules on next load.
 register_activation_hook( __FILE__, 'xmlnc_plugin_activate' );

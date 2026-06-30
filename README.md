@@ -2,7 +2,7 @@
   <h1>🗺️ XML Nest Creator</h1>
   <p><strong>A simple, highly customizable and conflict-free XML Sitemap Generator for WordPress.</strong></p>
   
-  [![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
+  [![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![WordPress](https://img.shields.io/badge/WordPress-5.5+-green.svg)](https://wordpress.org)
   [![License](https://img.shields.io/badge/license-GPLv2-brightgreen.svg)](https://github.com/gunjanjaswal/xml-nest-creator)
   [![Author](https://img.shields.io/badge/author-Gunjan_Jaswal-orange.svg)](https://www.gunjanjaswal.me)
@@ -21,6 +21,10 @@ Looking for a **simple XML generator**? XML Nest Creator is the absolute easiest
 * **🛡️ No Conflicts:** It safely turns off the default WordPress sitemap (`wp-sitemap.xml`) so you don't have duplicates.
 * **🔌 Works with SEO Plugins:** Automatically disables the sitemap feature of **Yoast SEO** and **Rank Math**, while letting you keep all their other helpful SEO features and meta tags. 
 * **⚡ Always Up to Date:** Instantly builds your XML sitemap when a search engine asks for it. No messy cron jobs or files required.
+* **🗂️ Sitemap Index & Pagination:** Big sites get a `sitemap.xml` index plus per-type sub-sitemaps, automatically split into 2,000-URL chunks.
+* **👀 Human-Readable View:** Open the sitemap in a browser and get a clean, branded table (XSL stylesheet) instead of raw XML.
+* **📣 robots.txt & IndexNow:** Auto-adds the `Sitemap:` line to `robots.txt` and pings search engines via the modern **IndexNow** protocol whenever you publish.
+* **🎚️ Per-Post Control:** Exclude any post — or set its priority and change frequency — from a sidebar meta box. Optionally emit featured images as `<image:image>` entries.
 * **🕹️ Clean Settings Page:** Enjoy a fast, simple settings page built right into WordPress without any bloated dashboards!
 
 ## 📥 Installation
@@ -48,6 +52,14 @@ Maintained and developed by **Gunjan Jaswal**.
 * ☕ Ko-fi: [ko-fi.com/gunjanjaswal](https://ko-fi.com/gunjanjaswal)
 
 ## 📝 Changelog
+
+### 1.1.0
+- Added sitemap index with paginated per-post-type sub-sitemaps and per-taxonomy sub-sitemaps (2,000-URL chunks).
+- Added XSL stylesheets for a styled, human-readable sitemap and index in the browser.
+- Added `robots.txt` `Sitemap:` directive and IndexNow pings on publish/update (both toggleable), replacing the deprecated sitemap-ping endpoints.
+- Added a per-post "XML Sitemap" meta box (exclude, priority, change frequency).
+- Added optional image sitemap support via the featured image (`<image:image>`).
+- Added default Priority and Change Frequency settings, plus a `noindex, follow` header on sitemap responses.
 
 ### 1.0.3
 - Updated "Tested up to" to WordPress 7.0.

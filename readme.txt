@@ -3,7 +3,7 @@ Contributors: gunjanjaswal
 Tags: simple xml generator, simple sitemap, xml generator, sitemap, seo
 Requires at least: 5.5
 Tested up to: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,6 +21,10 @@ Looking for a **simple XML generator**? XML Nest Creator is the easiest way to g
 * **No Conflicts:** It safely turns off the default WordPress sitemap so you don't have duplicates.
 * **Works with SEO Plugins:** Automatically disables the sitemap feature of Yoast SEO and Rank Math, while letting you keep all their other helpful SEO features.
 * **Always Up to Date:** Instantly builds your `sitemap.xml` when a search engine asks for it. No cron jobs or messy files.
+* **Sitemap Index & Pagination:** Large sites are split into a `sitemap.xml` index plus per-type sub-sitemaps, chunked at 2,000 URLs each.
+* **Human-Readable View:** Open the sitemap in a browser and see a clean, branded table instead of raw XML (XSL stylesheet).
+* **robots.txt & IndexNow:** Adds the `Sitemap:` line to `robots.txt` and pings search engines via the modern IndexNow protocol on publish.
+* **Per-Post Control:** Exclude any post, or set its priority and change frequency, from a sidebar meta box. Optional featured-image (`<image:image>`) entries.
 * **Clean Settings Page:** A fast, simple settings page built right into WordPress.
 
 == Installation ==
@@ -46,6 +50,15 @@ You can reach out to Gunjan Jaswal via [hello@gunjanjaswal.me](mailto:hello@gunj
 1. The XML Nest Creator Settings Page where you dictate indexation rules.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added sitemap index (`sitemap.xml`) with paginated per-post-type sub-sitemaps (`sitemap-{type}-{n}.xml`) and per-taxonomy sub-sitemaps (`sitemap-tax-{taxonomy}.xml`), chunked at 2,000 URLs.
+* Added XSL stylesheets so the sitemap and index render as a styled, human-readable table in the browser.
+* Added `robots.txt` `Sitemap:` directive (toggle) and IndexNow pings on publish/update (toggle), replacing the deprecated Google/Bing sitemap ping.
+* Added a per-post "XML Sitemap" meta box to exclude content or override priority and change frequency.
+* Added optional image sitemap support: each post's featured image is emitted as an `<image:image>` entry.
+* Added default Priority and Change Frequency settings.
+* Added `X-Robots-Tag: noindex, follow` header to sitemap responses.
 
 = 1.0.3 =
 * Updated "Tested up to" to WordPress 7.0.

@@ -51,6 +51,53 @@ class XMLNC_Settings {
 			'xml-nest-creator',
 			'xmlnc_general_section'
 		);
+
+		add_settings_section(
+			'xmlnc_options_section',
+			'Sitemap Options',
+			array( $this, 'render_options_section' ),
+			'xml-nest-creator'
+		);
+
+		add_settings_field(
+			'xmlnc_priority',
+			'Default Priority',
+			array( $this, 'render_priority_field' ),
+			'xml-nest-creator',
+			'xmlnc_options_section'
+		);
+
+		add_settings_field(
+			'xmlnc_changefreq',
+			'Default Change Frequency',
+			array( $this, 'render_changefreq_field' ),
+			'xml-nest-creator',
+			'xmlnc_options_section'
+		);
+
+		add_settings_field(
+			'xmlnc_enable_images',
+			'Image Sitemap',
+			array( $this, 'render_enable_images_field' ),
+			'xml-nest-creator',
+			'xmlnc_options_section'
+		);
+
+		add_settings_field(
+			'xmlnc_robots',
+			'robots.txt',
+			array( $this, 'render_robots_field' ),
+			'xml-nest-creator',
+			'xmlnc_options_section'
+		);
+
+		add_settings_field(
+			'xmlnc_indexnow',
+			'IndexNow',
+			array( $this, 'render_indexnow_field' ),
+			'xml-nest-creator',
+			'xmlnc_options_section'
+		);
 	}
 
 	public function sanitize_options( $input ) {
@@ -67,6 +114,27 @@ class XMLNC_Settings {
 		} else {
 			$sanitized['taxonomies'] = array();
 		}
+
+		// Default priority (0.0 - 1.0, or empty for none).
+		if ( isset( $input['priority'] ) && '' !== $input['priority'] && is_numeric( $input['priority'] ) ) {
+			$priority              = min( 1, max( 0, (float) $input['priority'] ) );
+			$sanitized['priority'] = number_format( $priority, 1 );
+		} else {
+			$sanitized['priority'] = '';
+		}
+
+		// Default change frequency.
+		$allowed_freq = array( 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never' );
+		if ( isset( $input['changefreq'] ) && in_array( $input['changefreq'], $allowed_freq, true ) ) {
+			$sanitized['changefreq'] = $input['changefreq'];
+		} else {
+			$sanitized['changefreq'] = '';
+		}
+
+		// Toggles.
+		$sanitized['enable_images'] = empty( $input['enable_images'] ) ? 0 : 1;
+		$sanitized['robots']        = empty( $input['robots'] ) ? 0 : 1;
+		$sanitized['indexnow']      = empty( $input['indexnow'] ) ? 0 : 1;
 
 		return $sanitized;
 	}
@@ -103,6 +171,75 @@ class XMLNC_Settings {
 		}
 	}
 
+
+	public function render_options_section() {
+		echo '<p>Fine-tune the generated sitemap and how search engines are notified.</p>';
+	}
+
+	public function render_priority_field() {
+		$options  = get_option( 'xmlnc_options' );
+		$priority = isset( $options['priority'] ) ? $options['priority'] : '';
+		?>
+		<select name="xmlnc_options[priority]">
+			<option value="" <?php selected( $priority, '' ); ?>>— None —</option>
+			<?php for ( $i = 10; $i >= 0; $i-- ) :
+				$val = number_format( $i / 10, 1 ); ?>
+				<option value="<?php echo esc_attr( $val ); ?>" <?php selected( $priority, $val ); ?>><?php echo esc_html( $val ); ?></option>
+			<?php endfor; ?>
+		</select>
+		<p class="description">Default <code>&lt;priority&gt;</code> for each URL. Per-post overrides win.</p>
+		<?php
+	}
+
+	public function render_changefreq_field() {
+		$options     = get_option( 'xmlnc_options' );
+		$changefreq  = isset( $options['changefreq'] ) ? $options['changefreq'] : '';
+		$frequencies = array( 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never' );
+		?>
+		<select name="xmlnc_options[changefreq]">
+			<option value="" <?php selected( $changefreq, '' ); ?>>— None —</option>
+			<?php foreach ( $frequencies as $freq ) : ?>
+				<option value="<?php echo esc_attr( $freq ); ?>" <?php selected( $changefreq, $freq ); ?>><?php echo esc_html( ucfirst( $freq ) ); ?></option>
+			<?php endforeach; ?>
+		</select>
+		<p class="description">Default <code>&lt;changefreq&gt;</code> for each URL. Per-post overrides win.</p>
+		<?php
+	}
+
+	public function render_enable_images_field() {
+		$options = get_option( 'xmlnc_options' );
+		$checked = ! empty( $options['enable_images'] );
+		?>
+		<label>
+			<input type="checkbox" name="xmlnc_options[enable_images]" value="1" <?php checked( $checked ); ?>>
+			Include each post's featured image as an <code>&lt;image:image&gt;</code> entry.
+		</label>
+		<?php
+	}
+
+	public function render_robots_field() {
+		$options = get_option( 'xmlnc_options' );
+		// Default on when the option has never been saved.
+		$checked = ! isset( $options['robots'] ) || ! empty( $options['robots'] );
+		?>
+		<label>
+			<input type="checkbox" name="xmlnc_options[robots]" value="1" <?php checked( $checked ); ?>>
+			Add the <code>Sitemap:</code> line to <code>robots.txt</code>.
+		</label>
+		<?php
+	}
+
+	public function render_indexnow_field() {
+		$options = get_option( 'xmlnc_options' );
+		$checked = ! empty( $options['indexnow'] );
+		?>
+		<label>
+			<input type="checkbox" name="xmlnc_options[indexnow]" value="1" <?php checked( $checked ); ?>>
+			Ping search engines via <strong>IndexNow</strong> (Bing, Yandex &amp; others) when content is published or updated.
+		</label>
+		<p class="description">Replaces the deprecated Google/Bing sitemap ping with the modern IndexNow protocol.</p>
+		<?php
+	}
 
 	public function render_settings_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
